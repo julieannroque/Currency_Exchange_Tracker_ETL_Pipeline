@@ -1,2 +1,144 @@
-# Currency_Exchange_Tracker_ETL_Pipeline
-Currency Exchange Tracker ETL Pipeline
+
+💱 Currency Exchange Tracker – ETL Pipeline
+
+A complete ETL pipeline that fetches, cleans, stores, and visualizes currency exchange rates using the [Frankfurter API](https://www.frankfurter.app/). Built with Python, PostgreSQL, and Tableau Public.
+
+---
+
+Project Goals
+
+- Automate exchange rate data ingestion (daily + historical)
+- Clean and normalize data for analysis
+- Store data in PostgreSQL
+- Visualize currency trends over time
+- Add logging, error alerts, and automation
+
+---
+
+Tech Stack
+
+| Component       | Tool / Tech              |
+|-----------------|--------------------------|
+| Extract         | Python `requests`        |
+| Transform       | Python `pandas`          |
+| Load            | PostgreSQL + SQLAlchemy  |
+| Orchestration   | Manual or `run_etl.py`   |
+| Logging         | `logging` module         |
+| Notifications   | Email via SMTP           |
+| Scheduling      | macOS/Linux `cron`       |
+| Visualization   | Tableau Public           |
+
+---
+
+Project Structure
+ 
+```
+currency_tracker/
+├── data/                  # Raw and processed data files
+│   ├── raw/
+│   └── processed/
+├── logs/                  # Log files
+├── notebooks/             # Jupyter notebooks for analysis
+├── src/                   # Source scripts
+│   ├── fetch_data.py
+│   ├── clean_data.py
+│   ├── load_to_db.py
+│   ├── run_etl.py
+│   └── utils/
+│       └── email_alert.py
+├── .env                   # Environment config (DB, email settings)
+├── requirements.txt       # Python dependencies
+└── README.md              # Project documentation
+
+ ```
+
+---
+
+Setup Instructions
+
+1. Install Dependencies
+ ```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+ ```
+
+2. Configure `.env`
+ ```
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=currency_tracker
+DB_USER=postgres
+DB_PASSWORD=your_password_here
+
+EMAIL_FROM=your_email@gmail.com
+EMAIL_TO=receiver_email@gmail.com
+EMAIL_SUBJECT=Currency Tracker ETL Alert
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_app_password
+ ```
+
+Use a [Gmail App Password](https://myaccount.google.com/apppasswords)
+
+---
+
+How to Use
+
+Run the full ETL (daily or on-demand):
+ ```
+python -m src.run_etl
+ ```
+
+Fetch Historical Data (example):
+
+In `src/fetch_data.py`, uncomment this line:
+ ```
+fetch_exchange_rates("2025-01-01", "2025-06-05")
+ ```
+
+Then run:
+ ```
+python -m src.fetch_data
+python -m src.clean_data data/raw/exchange_2024-12-31_to_2025-06-05.json
+python -m src.load_to_db data/processed/cleaned_2024-12-31_to_2025-06-05.csv
+ ```
+
+---
+
+Schedule with Cron (macOS/Linux)
+
+Edit crontab:
+ ```
+crontab -e
+ ```
+Add:
+ ```
+0 9 * * * /Users/yourname/currency_tracker/venv/bin/python -m src.run_etl
+ ```
+
+---
+
+Visualization with Tableau
+
+
+
+---
+
+Features
+
+* ✅ Auto file naming
+* ✅ Historical + live data support
+* ✅ Logging (`logs/etl.log`)
+* ✅ Email alerts on failure
+* ✅ Latest-file detection
+* ✅ Tableau-ready
+
+---
+
+Author
+
+Julie Roque
+
+
