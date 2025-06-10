@@ -26,7 +26,7 @@ Tech Stack
 | Logging         | `logging` module         |
 | Notifications   | Email via SMTP           |
 | Scheduling      | macOS/Linux `cron`       |
-| Visualization   | Tableau Public           |
+| Visualization   | Jupyter                  |
 
 ---
 
@@ -120,8 +120,9 @@ Add:
 
 ---
 
-Visualization with Tableau
+Visualization with Jupyter
 
+![image](https://github.com/user-attachments/assets/2176c26d-6ea9-4aa9-a1bb-6d818358d9ed)
 
 
 ---
@@ -133,7 +134,7 @@ Features
 * ✅ Logging (`logs/etl.log`)
 * ✅ Email alerts on failure
 * ✅ Latest-file detection
-* ✅ Tableau-ready
+* ✅ Analysis and Visualization in Jupyter
 
 ---
 
