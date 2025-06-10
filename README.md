@@ -83,6 +83,29 @@ EMAIL_PASS=your_app_password
 Use a [Gmail App Password](https://myaccount.google.com/apppasswords)
 
 ---
+Python code overview
+
+1. run_etl.py - Main orchestrator
+   - Coordinates the 3-step process
+   - Handles error logging and alerts
+   - Tracks execution status
+
+2. fetch_data.py - Extraction step
+   - Gets exchange rates from Frankfurter API
+   - Supports single date or date range
+   - Saves raw JSON to data/raw/
+
+3. clean_data.py - Transformation step
+   - Processes raw JSON into structured CSV
+   - Handles both single-day and multi-day formats
+   - Saves cleaned data to data/processed/
+
+4. load_to_db.py - Loading step
+   - Imports CSV data to PostgreSQL
+   - Uses SQLAlchemy for connection
+   - Appends to existing table
+
+---
 
 How to Use
 
